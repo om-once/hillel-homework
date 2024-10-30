@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.block {
+	margin: 50px;
+}
+.todo-list li {
+	margin-bottom: 10px;
+}
+
+.todo-list li span {
+	margin-right: 5px;
+}
