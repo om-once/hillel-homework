@@ -13,36 +13,31 @@ function checkInputField(regExp, item) {
 	}
 }
 
-function validateNameValue() {
+inputName.addEventListener('input', () => {
 	checkInputField(/.{2,}/, inputName);
-}
-
-function validateMessageValue() {
+});
+inputMessage.addEventListener('input', () => {
 	checkInputField(/.{5,}/, inputMessage);
-}
-
-function validatePhoneValue() {
+});
+inputPhone.addEventListener('input', () => {
 	checkInputField(/^\+380\d{9}$/, inputPhone);
-}
-
-function validateEmailValue() {
+});
+inputEmail.addEventListener('input', () => {
 	checkInputField(
 		/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/g,
 		inputEmail,
 	);
-}
-
-inputName.addEventListener('input', validateNameValue);
-inputMessage.addEventListener('input', validateMessageValue);
-inputPhone.addEventListener('input', validatePhoneValue);
-inputEmail.addEventListener('input', validateEmailValue);
+});
 
 form.addEventListener('submit', event => {
 	event.preventDefault();
-	validateMessageValue();
-	validateNameValue();
-	validatePhoneValue();
-	validateEmailValue();
+	checkInputField(/.{2,}/, inputName);
+	checkInputField(/.{5,}/, inputMessage);
+	checkInputField(/^\+380\d{9}$/, inputPhone);
+	checkInputField(
+		/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/g,
+		inputEmail,
+	);
 	if (
 		inputName.value.trim() === '' ||
 		inputMessage.value.trim() === '' ||
