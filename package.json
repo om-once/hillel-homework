@@ -2,11 +2,19 @@
 	"name": "hillel-homework",
 	"version": "1.0.0",
 	"main": "index.js",
+	"scripts": {
+		"build": "babel lesson-21/task21-1/src -d lesson-21/task21-1/build"
+	},
 	"author": "",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
 		"bootstrap": "^5.3.3",
 		"jquery": "^3.7.1"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.25.9",
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0"
 	}
 }
