@@ -1,0 +1,12 @@
+{
+	"name": "hillel-homework",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"bootstrap": "^5.3.3",
+		"jquery": "^3.7.1"
+	}
+}

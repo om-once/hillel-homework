@@ -5,9 +5,9 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-	entry: './lesson-22/task22-1/src/js/index.js',
+	entry: './src/js/index.js',
 	output: {
-		path: path.resolve(__dirname, './lesson-22/task22-1/dist/'),
+		path: path.resolve(__dirname, './dist/'),
 		filename: 'index.js',
 	},
 	module: {
@@ -38,7 +38,7 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
-			template: './lesson-22/task22-1/src/index.html',
+			template: './src/index.html',
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true,
