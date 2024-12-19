@@ -45,11 +45,11 @@ class App extends Component {
 		}
 	}
 
-	incrementCount(button) {
+	incrementCount(buttonName) {
 		this.setState(prevState => ({
-			[button]: {
-				...prevState[button],
-				count: prevState[button].count + 1,
+			[buttonName]: {
+				...prevState[buttonName],
+				count: prevState[buttonName].count + 1,
 			},
 		}));
 	}
