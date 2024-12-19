@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import Item from './components/Item/Item';
+import Result from './components/Result/Result';
 
 class App extends Component {
 	constructor(props) {
@@ -43,47 +45,11 @@ class App extends Component {
 		}
 	}
 
-	btn1IncrementCount() {
+	incrementCount(button) {
 		this.setState(prevState => ({
-			button1: {
-				...prevState.button1,
-				count: prevState.button1.count + 1,
-			},
-		}));
-	}
-
-	btn2IncrementCount() {
-		this.setState(prevState => ({
-			button2: {
-				...prevState.button2,
-				count: prevState.button2.count + 1,
-			},
-		}));
-	}
-
-	btn3IncrementCount() {
-		this.setState(prevState => ({
-			button3: {
-				...prevState.button3,
-				count: prevState.button3.count + 1,
-			},
-		}));
-	}
-
-	btn4IncrementCount() {
-		this.setState(prevState => ({
-			button4: {
-				...prevState.button4,
-				count: prevState.button4.count + 1,
-			},
-		}));
-	}
-
-	btn5IncrementCount() {
-		this.setState(prevState => ({
-			button5: {
-				...prevState.button5,
-				count: prevState.button5.count + 1,
+			[button]: {
+				...prevState[button],
+				count: prevState[button].count + 1,
 			},
 		}));
 	}
@@ -124,71 +90,31 @@ class App extends Component {
 			<div className='smile'>
 				<h1>Голосування за кращий смайлик</h1>
 				<ul className='smile__list'>
-					<li className='smile__item'>
-						<button
-							onClick={this.btn1IncrementCount.bind(this)}
-							className='smile__btn'
-						>
-							<img
-								className='smile__img'
-								src={this.state.button1.src}
-								alt='smile 1'
-							/>
-						</button>
-						<p className='smile__text'>{this.state.button1.count}</p>
-					</li>
-					<li className='smile__item'>
-						<button
-							onClick={this.btn2IncrementCount.bind(this)}
-							className='smile__btn'
-						>
-							<img
-								className='smile__img'
-								src={this.state.button2.src}
-								alt='smile 2'
-							/>
-						</button>
-						<p className='smile__text'>{this.state.button2.count}</p>
-					</li>
-					<li className='smile__item'>
-						<button
-							onClick={this.btn3IncrementCount.bind(this)}
-							className='smile__btn'
-						>
-							<img
-								className='smile__img'
-								src={this.state.button3.src}
-								alt='smile 3'
-							/>
-						</button>
-						<p className='smile__text'>{this.state.button3.count}</p>
-					</li>
-					<li className='smile__item'>
-						<button
-							onClick={this.btn4IncrementCount.bind(this)}
-							className='smile__btn'
-						>
-							<img
-								className='smile__img'
-								src={this.state.button4.src}
-								alt='smile 4'
-							/>
-						</button>
-						<p className='smile__text'>{this.state.button4.count}</p>
-					</li>
-					<li className='smile__item'>
-						<button
-							onClick={this.btn5IncrementCount.bind(this)}
-							className='smile__btn'
-						>
-							<img
-								className='smile__img'
-								src={this.state.button5.src}
-								alt='smile 5'
-							/>
-						</button>
-						<p className='smile__text'>{this.state.button5.count}</p>
-					</li>
+					<Item
+						btnFunc={() => this.incrementCount('button1')}
+						imgSrc={this.state.button1.src}
+						text={this.state.button1.count}
+					/>
+					<Item
+						btnFunc={() => this.incrementCount('button2')}
+						imgSrc={this.state.button2.src}
+						text={this.state.button2.count}
+					/>
+					<Item
+						btnFunc={() => this.incrementCount('button3')}
+						imgSrc={this.state.button3.src}
+						text={this.state.button3.count}
+					/>
+					<Item
+						btnFunc={() => this.incrementCount('button4')}
+						imgSrc={this.state.button4.src}
+						text={this.state.button4.count}
+					/>
+					<Item
+						btnFunc={() => this.incrementCount('button5')}
+						imgSrc={this.state.button5.src}
+						text={this.state.button5.count}
+					/>
 				</ul>
 				<div className='smile__btns'>
 					<button onClick={this.calcWinner.bind(this)}>
@@ -199,14 +125,10 @@ class App extends Component {
 					</button>
 				</div>
 				{this.state.resultImage && (
-					<div className='smile__result'>
-						<h2>Результати голосування</h2>
-						<h3>Переможець:</h3>
-						<div>
-							<img src={this.state.resultImage} alt='Переможець' />
-						</div>
-						<p>Кількість голосів: {this.state.resultCount}</p>
-					</div>
+					<Result
+						resultImg={this.state.resultImage}
+						resultCount={this.state.resultCount}
+					/>
 				)}
 			</div>
 		);
