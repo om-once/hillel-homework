@@ -1,0 +1,79 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+.smile__img {
+	width: 100%;
+}
+
+.smile {
+	max-width: 800px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.smile__list {
+	display: flex;
+	gap: 20px;
+}
+
+.smile__item {
+	display: flex;
+	gap: 20px;
+	align-items: flex-end;
+}
+
+.smile__text {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.smile__btn {
+	border: none;
+	background: none;
+	border-radius: 50%;
+	width: 50px;
+	cursor: pointer;
+}
+
+.smile__btns {
+	display: flex;
+	gap: 10px;
+}
+
+.smile__btns button {
+	background-color: green;
+	border-radius: 10px;
+	padding: 10px 15px;
+	border: none;
+	color: #fff;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.smile__btns .reset {
+	background-color: red;
+}
+
+.smile__result {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	font-weight: 700;
+}
+
+.smile__result img {
+	width: 50px;
+}
