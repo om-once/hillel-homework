@@ -1,74 +1,36 @@
-import { useEffect, useRef, useState } from 'react';
-
-function App() {
-	const textInput = useRef(null);
-	const [todos, setTodos] = useState([]);
-	const [inputName, setInputName] = useState('');
-
-	const handleChange = () => {
-		setInputName(textInput.current.value);
-	};
-
-	const addTodo = () => {
-		if (inputName.trim() === '') return;
-		setTodos(prevState => [
-			...prevState,
-			{
-				id: +new Date(),
-				text: inputName.trim(),
-				completed: false,
-			},
-		]);
-		setInputName('');
-	};
-
-	const todoComplete = id => {
-		setTodos(prevState =>
-			prevState.map(item =>
-				item.id === id ? { ...item, completed: !item.completed } : item,
-			),
-		);
-	};
-
-	const todoDelete = id => {
-		setTodos(prevState => prevState.filter(item => item.id !== id));
-		console.log(todos);
-	};
-
-	useEffect(() => {
-		if (todos !== 0) {
-			localStorage.setItem('todos', JSON.stringify(todos));
-		}
-	}, [todos]);
-
-	useEffect(() => {
-		const savedTodos = localStorage.getItem('todos');
-		if (savedTodos) {
-			setTodos(JSON.parse(savedTodos));
-		}
-	}, []);
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AboutUs from './components/AboutUs/AboutUs';
+import Contacts from './components/Contacts/Contacts';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import NotFound from './components/NotFound/NotFound';
+import { ThemeContext, themes } from './themeContext';
+const App = () => {
+	const theme = useState(themes.light);
 
 	return (
-		<div className='todo'>
-			<input
-				onChange={handleChange}
-				value={inputName}
-				type='text'
-				ref={textInput}
-				className='todo-input'
-			/>
-			<button onClick={addTodo}>add</button>
-			<ul className='todo-list'>
-				{todos.map(item => (
-					<li key={item.id} className='todo-list__item'>
-						<span>{item.text}</span>
-						<button onClick={() => todoComplete(item.id)}>complete</button>
-						<button onClick={() => todoDelete(item.id)}>delete</button>
-					</li>
-				))}
-			</ul>
-		</div>
+		<ThemeContext.Provider value={theme}>
+			<BrowserRouter>
+				<ErrorBoundary>
+					<div className='content'>
+						<Header />
+						<main>
+							<Routes>
+								<Route path='*' element={<NotFound />} />
+								<Route path='/' element={<Main />} />
+								<Route path='/contacts' element={<Contacts />} />
+								<Route path='/about' element={<AboutUs />} />
+							</Routes>
+						</main>
+						<Footer />
+					</div>
+				</ErrorBoundary>
+			</BrowserRouter>
+		</ThemeContext.Provider>
 	);
-}
+};
 
 export default App;
