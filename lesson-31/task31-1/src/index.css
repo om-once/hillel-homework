@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.btn {
+	display: flex;
+	background-color: #444;
+	color: #fff;
+	padding: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.btn:disabled {
+	opacity: 0.5;
+}
+
+.btn-clear {
+	background-color: #d83939;
+}
+
+.swapi {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-height: 100vh;
+	padding: 15px;
+}
+
+.swapi-header {
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.swapi-main {
+	flex: 1 1 auto;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+}
+
+.swapi-main__content {
+	padding: 20px;
+}
+
+.swapi-main__content p {
+	background-color: #444;
+	display: inline-block;
+	color: #fff;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.swapi-form {
+	display: flex;
+	position: relative;
+}
+
+.swapi-form__error {
+	position: absolute;
+	left: 0;
+	top: calc(100% + 5px);
+	color: red;
+	font-size: 14px;
+}
+
+.swapi-form__link,
+.swapi-form__content {
+	display: flex;
+	align-items: center;
+}
+
+.swapi-form__link {
+	background-color: #444;
+	padding: 5px;
+	color: #fff;
+	border: 1px solid #ccc;
+}
+
+.swapi-form__text {
+	width: 300px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
