@@ -103,6 +103,19 @@ ul {
 	font-weight: 500;
 	font-style: italic;
 	cursor: pointer;
+	position: relative;
+}
+
+.todo-list__item p:hover::after {
+	content: 'Edit task';
+	display: block;
+	background: #ccc;
+	padding: 3px;
+	position: absolute;
+	right: -85px;
+	top: 0;
+	border-radius: 5px;
+	color: #2c1a1a;
 }
 
 .todo-list__btns {
